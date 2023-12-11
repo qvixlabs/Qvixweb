@@ -1,0 +1,94 @@
+<!-- display_data.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Display Firebase Data</title>
+  <!-- Include Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/jquery.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #data-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .data-entry {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .data-entry p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="data-container">
+    <!-- Data will be displayed here -->
+  </div>
+
+  <script>
+    // Check if the user is authenticated
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, fetch and display data
+        displayData();
+      } else {
+        // User is not signed in, redirect to the login page
+        window.location.href = 'auth.html';
+      }
+    });
+
+    // Reference to the 'formData' collection
+    const formDataRef = firebase.database().ref('formData');
+
+    // Function to fetch and display data
+    function displayData() {
+      formDataRef.once('value', (snapshot) => {
+        const dataContainer = document.getElementById('data-container');
+        dataContainer.innerHTML = ''; // Clear previous data
+
+        snapshot.forEach((childSnapshot) => {
+          const data = childSnapshot.val();
+          const {
+            name,
+            email,
+            message
+          } = data;
+
+          const dataDiv = document.createElement('div');
+          dataDiv.classList.add('data-entry');
+          dataDiv.innerHTML = `
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Message:</strong> ${message}</p>
+          `;
+          dataContainer.appendChild(dataDiv);
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>
