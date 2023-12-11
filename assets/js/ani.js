@@ -1,7 +1,7 @@
   const textParts = [
-            "easy",
-            "fun",
-            "exciting",
+            "brand",
+            "product",
+            "business",
             // Add more text parts as needed
         ];
 
