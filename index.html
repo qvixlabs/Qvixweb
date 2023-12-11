@@ -617,11 +617,13 @@
                         </h2>
                      </div>
                      <div class="tp-news-button p-relative">
-                        <form id="signupForm">
-                           <input id="emailInput" type="email" placeholder="Enter your email">
-                           <button class="tp-submit-button tp-btn-yellow" type="submit">Subscribe <i class="fal fa-long-arrow-right"></i></button>
-                       </form>
-                       
+                       <form id="subscriptionForm">
+                        <input type="email" id="emailSubscription" placeholder="Enter your email" required>
+                        <button class="tp-submit-button tp-btn-yellow" type="submit" onclick="subscribeToFirebase()">Subscribe</button>
+                        <p class="subscribe-response"></p>
+                    </form>
+                    
+
                      </div>
                   </div>
                </div>
@@ -902,7 +904,8 @@
    <script src="assets/js/ajax-form.js"></script>
    <script src="assets/js/main.js"></script>
    <script src="assets/js/ani.js"></script>
-   <script src="assets/js/mail.js"></script>
+   <script src="assets/js/firebase.js"></script>
+
 
 </body>
 

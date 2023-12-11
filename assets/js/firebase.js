@@ -62,4 +62,29 @@ const firebaseConfig = {
     return input.replace(/<[^>]*>?/gm, ''); // Example: Remove HTML tags
   }
   
+   function subscribeToFirebase() {
+    const email = sanitizeInput(document.getElementById("emailSubscription").value);
+  
+    if (email) {
+      const database = firebase.database();
+  
+      database.ref('subscribers').push({
+        email: email
+      })
+      .then(() => {
+        console.log("Subscribed successfully!");
+        document.getElementById("emailSubscription").value = "";
+        const responseElement = document.querySelector('.subscribe-response');
+        responseElement.textContent = "Subscribed successfully!";
+      })
+      .catch((error) => {
+        console.error("Error subscribing: ", error);
+        const responseElement = document.querySelector('.subscribe-response');
+        responseElement.textContent = "Failed to subscribe. Please try again.";
+      });
+    } else {
+      const responseElement = document.querySelector('.subscribe-response');
+      responseElement.textContent = "Please enter a valid email.";
+    }
+  }
   
