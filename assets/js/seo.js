@@ -1,5 +1,5 @@
 const currentPage = 'homepage'; 
-fetch('seo-content.json')
+fetch('/seo.json')
   .then(response => response.json())
   .then(data => {
     document.getElementById('pageTitle').innerText = data[currentPage].title;
