@@ -62,7 +62,8 @@ const firebaseConfig = {
     return input.replace(/<[^>]*>?/gm, ''); // Example: Remove HTML tags
   }
   
-   function subscribeToFirebase() {
+  function subscribeToFirebase(event) {
+    event.preventDefault();
     const email = sanitizeInput(document.getElementById("emailSubscription").value);
   
     if (email) {
