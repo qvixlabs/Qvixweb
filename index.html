@@ -117,15 +117,16 @@
             <ul>
                <li><i class="fas fa-star"></i> <a href="https://goo.gl/maps/abHegV4AoiJA6Syd8" target="_blank"></a></li>
                <li><i class="fas fa-star"></i> <a href="tel:"></a></li>
-               <li><i class="fas fa-star"></i> <a href="mailto:help@qvix.xyz">help@qvix.xyz</a></li>
+               <li><i class="fas fa-star"></i> <a href="mailto:help@qvix.xyz">helsp@qvix.xyz</a></li>
             </ul>
          </div>
          <div class="tpoffcanvas__input d-none d-sm-block">
             <p>Get UPdate</p>
-            <form class="p-relative" action="#">
-               <input type="text" placeholder="Enter mail">
-               <button type="submit"><i class="fas fa-paper-plane"></i></button>
-            </form>
+            <form class="p-relative" id="subscriptionForm">
+               <input type="email" id="emailSubscription" placeholder="Enter email" required>
+               <button type="submit" onclick="subscribeToFirebase(event)"><i class="fas fa-paper-plane"></i></button>
+               <p class="subscribe-response"></p>
+           </form>
          </div>
          <div class="tpoffcanvas__instagram d-none d-sm-block">
             <p>Check Instagram POst</p>
