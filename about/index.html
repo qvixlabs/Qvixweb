@@ -24,21 +24,17 @@
    <link rel="stylesheet" href="assets/css/spacing.css">
    <link rel="stylesheet" href="assets/css/style.css">
    <script src="assets/js/ht.js"></script>
+   <script src="assets/js/firebase.js"></script>
 </head>
 
 <body>
-   <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-      <![endif]-->
-
-    <!-- tp-header-area-start -->
     <header class="d-none d-lg-block">
       <div id="header-sticky" class="tp-header-area-two tp-header-bg header-transparent header-transparent-two">
          <div class="container-fluid">
             <div class="row align-items-center">
                <div class="col-xxl-3 col-xl-3 col-lg-3">
                   <div class="tp-logo text-start">
-                     <a href="index.html"><img src="assets/img/logo/logo-blue.png" alt="qvix"></a>
+                     <a href="https://www.qvix.xyz/"><img src="assets/img/logo/logo-blue.png" alt="qvix"></a>
                   </div>
                </div>
             
@@ -132,8 +128,8 @@
             <div class="row">
                <div class="col-xxl-12">
                   <div class="breadcrumb__content p-relative z-index-1">
-                     <h3 class="breadcrumb__title">About Collax</h3>
-                      <a href="contact.html" class="tp-btn-white-border">Lets work together <i class="far fa-arrow-right"></i></a>
+                     <h3 class="breadcrumb__title">About Qvix</h3>
+                      <a href="\contact" class="tp-btn-white-border">Lets work together <i class="far fa-arrow-right"></i></a>
                   </div>
                </div>
             </div>
@@ -233,7 +229,7 @@
                            <a href="#"><i class="flaticon-web"></i></a>
                         </div>
                         <div class="tpchosebox__content">
-                           <h4><a href="service-details.html">Cretified <br>
+                           <h4><a href="service-details.html">Certified <br>
                               Globally</a></h4>
                            <p></p>
                         </div>
@@ -283,7 +279,7 @@
                      <div class="acfeature mb-50">
                         <div class="ac-circle"></div>
                         <div class="acfeature__item">
-                           <h3 class="ac-feature-sm-title"><a href="about-me.html">Project kikoff</a></h3>
+                           <h3 class="ac-feature-sm-title"><a href="">Project kickoff</a></h3>
                            <p></p>
                         </div>
                      </div>
@@ -292,7 +288,7 @@
                      <div class="acfeature mb-50">
                         <div class="ac-circle ac-cirle-color-2"></div>
                         <div class="acfeature__item">
-                           <h3 class="ac-feature-sm-title ac-cirle-color-2"><a href="about-me.html">Branding</a></h3>
+                           <h3 class="ac-feature-sm-title ac-cirle-color-2"><a href="">Branding</a></h3>
                            <p></p>
                         </div>
                      </div>
@@ -301,7 +297,7 @@
                      <div class="acfeature mb-50">
                         <div class="ac-circle ac-cirle-color-3"></div>
                         <div class="acfeature__item">
-                           <h3 class="ac-feature-sm-title ac-cirle-color-3"><a href="about-me.html">Design Process</a></h3>
+                           <h3 class="ac-feature-sm-title ac-cirle-color-3"><a href="">Design Process</a></h3>
                            <p></p>
                         </div>
                      </div>
@@ -310,7 +306,7 @@
                      <div class="acfeature mb-50">
                         <div class="ac-circle ac-cirle-color-4"></div>
                         <div class="acfeature__item">
-                           <h3 class="ac-feature-sm-title ac-cirle-color-4"><a href="about-me.html">Development</a></h3>
+                           <h3 class="ac-feature-sm-title ac-cirle-color-4"><a href="">Development</a></h3>
                            <p></p>
                         </div>
                      </div>
@@ -336,8 +332,8 @@
                         </h2>
                      </div>
                      <div class="tp-news-button wow tpfadeUp" data-wow-duration=".7s" data-wow-delay="1s">
-                        <a class="tp-btn-lg-yellow mr-20" href="contact.html">Contact Us</a>
-                        <a class="tp-btn-sky" href="about-me.html">Learn More</a>
+                        <a class="tp-btn-lg-yellow mr-20" href="\contact">Contact Us</a>
+                        <a class="tp-btn-sky" href="#">Learn More</a>
                      </div>
                   </div>
                </div>
@@ -366,7 +362,7 @@
                         <a href="index.html"><img src="assets/img/logo/logo-white.png" alt=""></a>
                      </div>
                      <div class="tp-footer-widget__text mb-30">
-                        <p>"Qvix: Tech Innovation Partner. Tailored Solutions, Exceptional Support. HR, Design, Marketing Experts. Let's Grow."</p>
+                        <p>Your Tech Innovation Partner. Customized Solutions, Exceptional Support. HR, Design, Marketing Experts. Let's Grow.</p>
                      </div>
                      <div class="tp-footer-widget__social-link">
                         <a href="#"><i class="fab fa-youtube"></i></a>
@@ -417,10 +413,11 @@
                         <p>Subscribe to our newsletter for exclusive insights</p>
                      </div>
                      <div class="tp-footer-widget__input">
-                        <form action="#">
-                           <input type="text" placeholder="Enter Mail">
-                           <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                        </form>
+                        <form class="p-relative" id="subscriptionForm">
+                           <input type="email" id="emailSubscription" placeholder="Enter email" required>
+                           <button type="submit" onclick="subscribeToFirebase(event)"><i class="fas fa-paper-plane"></i></button>
+                           <p class="subscribe-response"></p>
+                       </form>
                      </div>
                   </div>
                </div>
@@ -439,8 +436,8 @@
                      <div class="col-xl-6 col-lg-6 col-12">
                         <div class="tp-copyright-right text-start text-md-center text-lg-end">
                            
-                           <a href="#">Email: x@mail.cvom</a>
-                           <a href="#">Mobile : 017222222222</a>
+                           <a href="#">Email: help@qvix.xyz</a>
+                           
                         </div>
                      </div>
                   </div>
