@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /data/
 Disallow: /auth/
+Disallow: /sitemap.xml
 Sitemap: https://www.qvix.xyz/sitemap.xml
